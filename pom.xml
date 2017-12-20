@@ -22,6 +22,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
+		<org.mapstruct.version>1.2.0.Beta2</org.mapstruct.version>
 	</properties>
 
 	<dependencies>
@@ -62,10 +63,17 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<!-- MapStruct is a code generator that greatly simplifies the implementation of mappings between Java bean types based on a convention over configuration approach. -->
 		<dependency>
 			<groupId>org.mapstruct</groupId>
-			<artifactId>mapstruct</artifactId>
-			<version>1.1.0.Final</version>
+			<artifactId>mapstruct-jdk8</artifactId>
+			<version>${org.mapstruct.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.mapstruct</groupId>
+			<artifactId>mapstruct-processor</artifactId>
+			<version>${org.mapstruct.version}</version>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>mysql</groupId>
@@ -78,22 +86,6 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.5.1</version>
-				<configuration>
-					<source>1.8</source>
-					<target>1.8</target>
-					<annotationProcessorPaths>
-						<path>
-							<groupId>org.mapstruct</groupId>
-							<artifactId>mapstruct-processor</artifactId>
-							<version>1.1.0.Final</version>
-						</path>
-					</annotationProcessorPaths>
-				</configuration>
 			</plugin>
 		</plugins>
 	</build>

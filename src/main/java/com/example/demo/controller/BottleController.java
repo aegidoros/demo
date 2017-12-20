@@ -15,19 +15,18 @@ import java.util.List;
 @RequestMapping("/api/bottles/")
 public class BottleController {
 
-    //private final BottleService bottleService;
+    private final BottleService bottleService;
     private final BottleRepository bottleRepository;
 
     @Autowired
-    BottleController(BottleRepository bottleRepository) {
-        //   this.bottleService=bottleService;
+    public BottleController(BottleService bottleService, BottleRepository bottleRepository) {
+        this.bottleService=bottleService;
         this.bottleRepository = bottleRepository;
     }
 
     @GetMapping("/")
-    public List<BottleEntity> getAllBottles() {
-        //return bottleService.getBottles();
-        return (List<BottleEntity>) bottleRepository.findAll();
+    public List<Bottle> getAllBottles() {
+        return bottleService.getBottles();
     }
 
 }
